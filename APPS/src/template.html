@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="theme-color" content="#272b30">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>FlappyBird</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
+  <meta name="google-site-verification" content="UoRb1chXxdu0BzKwtt0PneXVdCATq4u6d_mvn3gosC8" />
+</head>
+
+<body>
+  <!-- Menu Awal -->
+  <div id="menu" class="container text-center mt-5">
+    <h1 class="text-white">Flappy Bird Chess</h1>
+    <button class="btn btn-success btn-lg my-3" onclick="startGame()">MULAI</button>
+    <button class="btn btn-info btn-lg" onclick="showInstructions()">CARA MAIN</button>
+
+    <!-- Petunjuk Permainan -->
+    <div id="instructions" class="text-white mt-3 d-none">
+      <p>TEPUK TANGAN!!! atau Tekan spasi atau klik/tap untuk membuat burung terbang.<br>
+         Hindari tabrakan dengan pipa.<br>
+         Tekan R untuk restart jika game over.</p>
+      <button class="btn btn-warning mt-2" onclick="hideInstructions()">Tutup</button>
+    </div>
+  </div>
+
+  <!-- Game Canvas -->
+  <div id="game-container" class="container d-none">
+    <div class='row'>
+      <div id="Game" class='col-sm-12 d-flex justify-content-center mt-5'></div>
+    </div>
+  </div>
+
+<script>
+  window.onload = () => {
+    // Saat tombol MULAI ditekan
+    window.startGame = () => {
+      document.getElementById('menu').classList.add('d-none');
+      document.getElementById('game-container').classList.remove('d-none');
+      new p5(window.sketch, 'Game');
+    };
+
+    // Tampilkan petunjuk
+    window.showInstructions = () => {
+      document.getElementById('instructions').classList.remove('d-none');
+    };
+
+    // Sembunyikan petunjuk
+    window.hideInstructions = () => {
+      document.getElementById('instructions').classList.add('d-none');
+    };
+  };
+</script>
+
+</body>
+
+
+</html>
