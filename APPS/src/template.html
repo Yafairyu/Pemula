@@ -11,57 +11,120 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      overflow: hidden; /* cegah scroll */
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .bg-img {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      color: white;
+      text-align: center;
+
+      /* Ini tambahan supaya pusat vertikal & horizontal */
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+	
+	button {
+      background-color: #FBE6AC !important;
+      border: 2px solid #4A2E24 !important;
+      color: #4A2E24 !important;
+      font-weight: bold;
+      margin: 0.5rem 0;
+      width: 200px;
+    }
+	
+	
+	.card {
+    background-color: #FBE6AC !important;
+    border: 2px solid #4A2E24 !important;
+    color: #4A2E24 !important;
+  }
+
+  .card .card-body {
+    color: #4A2E24 !important;
+  }
+  </style>
 </head>
 
 <body class="bg-dark text-white text-center">
-  <div class="container mt-5" id="menu">
-    <h1 class="display-3 font-weight-bold">Burung Loncat</h1>
-    <button class="btn btn-success btn-lg my-3" onclick="startGame()">Mulai</button>
-    <button class="btn btn-info btn-lg my-3" onclick="showInstructions()">Cara Main</button>
-    <button class="btn btn-warning btn-lg my-3" onclick="showCredit()">Credit</button>
-    <button class="btn btn-light btn-lg my-3" id="soundButton">🔇Mute</button>
+  <!-- Background Gambar -->
+  <img class="bg-img" src="./assets/burung.png" alt="Background Burung">
 
-    <div id="instructions" class="mt-4 d-none">
-      <div class="card bg-secondary text-white">
-        <div class="card-body">
-          <h5 class="card-title">📖Cara Permainannya📖</h5>
-          <p class="card-text">
-            Selamat datang di game <strong>Burung Loncat</strong> 🐦!<br>
-            Permainan ini menggunakan <strong>gerakan tangan</strong> dan <strong>tepuk tangan</strong> untuk mengontrol burung.
-          </p>
-          <ul class="text-left">
-            <li>👏 Tepuk tangan satu kali untuk membuat burung loncat.</li>
-            <li>🕊️ Hindari tabrakan dengan pipa.</li>
-            <li>⭐ Lewati pipa untuk mendapatkan poin.</li>
-            <li>🎯 Bertahan selama mungkin dan raih skor tertinggi!</li>
-          </ul>
-          <button class="btn btn-outline-light mt-2" onclick="hideInstructions()">Tutup</button>
+  <div class="content">
+    <div class="container mt-5" id="menu">
+	 <img src="./assets/judul.png" alt="Judul Burung Loncat" style="max-width: 100%; height: auto; margin-bottom: 1rem;">
+      <h1></h1>
+      <button class="btn btn-success btn-lg my-3" onclick="startGame()">Mulai</button>
+      <button class="btn btn-info btn-lg my-3" onclick="showInstructions()">Cara Main</button>
+      <button class="btn btn-warning btn-lg my-3" onclick="showCredit()">Credit</button>
+      <button class="btn btn-light btn-lg my-3" id="soundButton">🔇Mute</button>
+
+      <div id="instructions" class="mt-4 d-none">
+        <div class="card bg-secondary text-white">
+          <div class="card-body">
+            <h5 class="card-title">📖Cara Permainannya📖</h5>
+            <p class="card-text">
+              Selamat datang di game <strong>Burung Loncat</strong> 🐦!<br>
+              Permainan ini menggunakan <strong>gerakan tangan</strong> dan <strong>tepuk tangan</strong> untuk mengontrol burung.
+            </p>
+            <ul class="text-left">
+              <li>👏 Tepuk tangan satu kali untuk membuat burung loncat.</li>
+              <li>🕊️ Hindari tabrakan dengan pipa.</li>
+              <li>⭐ Lewati pipa untuk mendapatkan poin.</li>
+              <li>🎯 Bertahan selama mungkin dan raih skor tertinggi!</li>
+            </ul>
+            <button class="btn btn-outline-light mt-2" onclick="hideInstructions()">Tutup</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="credit" class="mt-4 d-none">
+        <div class="card bg-secondary text-white">
+          <div class="card-body">
+            <h5 class="card-title">✨ Credit ✨</h5>
+            <p>
+              Game ini dibuat oleh siswa-siswa kelas XI-8 <strong>SMA Negeri 10 Samarinda</strong> 🎓:
+            </p>
+            <ul class="text-left">
+              <li><strong>Achmad Irmansyah</strong> – Pengembang & Logika Game ⚙️</li>
+              <li><strong>Diego Prayata Fatikh Moulyandri</strong> – Integrasi Machine Learning 🧠</li>
+              <li><strong>Jundi Satria Badar</strong> – Pembuat Sprite 🐦</li>
+              <li><strong>Muhammad Naufal Hakim</strong> – Desain Visual & UI/UX 🎨</li>
+            </ul>
+            <p>Terima kasih telah memainkan <strong>Burung Loncat</strong> 🐦</p>
+            <button class="btn btn-outline-light mt-2" onclick="hideCredit()">Tutup</button>
+          </div>
         </div>
       </div>
     </div>
 
-    <div id="credit" class="mt-4 d-none">
-      <div class="card bg-secondary text-white">
-        <div class="card-body">
-          <h5 class="card-title">✨ Credit ✨</h5>
-          <p>
-            Game ini dibuat oleh siswa-siswa kelas XI-8 <strong>SMA Negeri 10 Samarinda</strong> 🎓:
-          </p>
-          <ul class="text-left">
-            <li><strong>Achmad Irmansyah</strong> – Pengembang & Logika Game ⚙️</li>
-            <li><strong>Diego Prayata Fatikh Moulyandri</strong> – Integrasi Machine Learning 🧠</li>
-            <li><strong>Jundi Satria Badar</strong> – Pembuat Sprite 🐦</li>
-            <li><strong>Muhammad Naufal Hakim</strong> – Desain Visual & UI/UX 🎨</li>
-          </ul>
-          <p>Terima kasih telah memainkan <strong>Burung Loncat</strong> 🐦</p>
-          <button class="btn btn-outline-light mt-2" onclick="hideCredit()">Tutup</button>
-        </div>
-      </div>
+    <div id="game-container" class="container d-none" style="height: 100vh; width: 100vw;">
+      <div id="Game" class="d-flex justify-content-center align-items-center" style="width: 100%; height: 100%;"></div>
     </div>
-  </div>
-
-  <div id="game-container" class="container d-none" style="height: 100vh; width: 100vw;">
-    <div id="Game" class="d-flex justify-content-center align-items-center" style="width: 100%; height: 100%;"></div>
   </div>
 
   <audio id="bgm" loop>
